@@ -1,0 +1,25 @@
+CREATE TABLE Products
+(
+	id INT PRIMARY KEY,
+	 name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Categories
+(
+	id INT PRIMARY KEY,
+	name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE ProductsCategories
+(
+	productsId INT FOREIGN KEY REFERENCES products(id)
+	categoriesId INT FOREIGN KEY REFERENCES categories(id)
+	PRIMARY KEY(productId,categoriesId)
+);
+
+
+
+SELECT Products.Name, Categories.Name
+FROM Products
+LEFT JOIN ProductCategories ON Products.id = ProductsCategories.productId
+LEFT JOIN Categories ON ProductCategories.categoriesId = categories.id;
